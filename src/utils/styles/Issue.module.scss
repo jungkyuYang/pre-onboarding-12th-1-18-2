@@ -1,0 +1,37 @@
+.ad_container {
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	border: 1px solid #eee;
+	margin: 20px 0;
+	position: relative;
+}
+
+.ad_header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.ad_id {
+	background-color: #f1f1f1;
+	padding: 3px 8px;
+	margin-right: 10px;
+	border-radius: 5px;
+}
+
+.ad_title {
+	font-size: 18px;
+}
+
+.ad_meta {
+	display: flex;
+	gap: 10px;
+	font-size: 14px;
+	color: #888;
+
+	.ad_user,
+	.ad_date {
+		margin-right: 5px;
+	}
+}
