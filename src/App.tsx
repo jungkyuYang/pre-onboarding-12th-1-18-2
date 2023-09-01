@@ -19,7 +19,7 @@ function App() {
 					<Route path={ROUTE_PATH.ISSUELIST} element={<IssueList />} />
 					<Route path={`${ROUTE_PATH.ISSUEDETAIL}/:id`} element={<IssueDetail />} />
 				</Route>
-				<Route path="*" element={<NotFound />} />
+				<Route path={ROUTE_PATH.NOTFOUND} element={<NotFound />} />
 			</Routes>
 		</Suspense>
 	);

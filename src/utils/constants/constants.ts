@@ -2,6 +2,7 @@ export const ROUTE_PATH = {
 	MAIN: '/',
 	ISSUELIST: '/issuelist',
 	ISSUEDETAIL: '/issuedetail',
+	NOTFOUND: '*',
 };
 
 export const URL_INFO = {

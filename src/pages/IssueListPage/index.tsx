@@ -1,21 +1,43 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { issueApi } from '../../api/issueApi';
 import Issue from '../../components/IssueList/Issue';
 import { AdBanner } from '../../components/IssueList/AdBanner';
+import LoadingSpinner from '../../components/common/LoadingSpinner';
 
 export default function IssueListPage() {
 	const [issue, setIssue] = useState<any>([]);
 	const [pageNumber, setPageNumber] = useState<number>(1);
+	const [loading, setLoading] = useState(false);
+	const pageEnd = useRef<any>();
+	const loadMore = () => {
+		setPageNumber(prev => prev + 1);
+	};
 
 	useEffect(() => {
 		const axiosIssue = async () => {
 			const data = await issueApi.getIssue(pageNumber);
 			setIssue((prevIssue: any) => [...prevIssue, ...data]);
+			setLoading(true);
 		};
 		axiosIssue();
 	}, [pageNumber]);
+
+	useEffect(() => {
+		if (loading) {
+			const observer = new IntersectionObserver(
+				entries => {
+					if (entries[0].isIntersecting) {
+						loadMore();
+					}
+				},
+				{ threshold: 1 },
+			);
+
+			observer.observe(pageEnd.current);
+		}
+	}, [loading]);
 
 	return (
 		<div>
@@ -42,6 +64,9 @@ export default function IssueListPage() {
 					</Link>
 				);
 			})}
+			<div ref={pageEnd}>
+				<LoadingSpinner scroll />
+			</div>
 		</div>
 	);
 }

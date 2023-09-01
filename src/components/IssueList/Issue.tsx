@@ -11,7 +11,7 @@ export default function Issue({ data }: any) {
 				<span className={styles.ad_user}>{`작성자: ${data.user?.login}`}</span>
 				<span className={styles.ad_date}>{`작성일: ${data.updated_at}`}</span>
 			</div>
-			<div>{data.comments}</div>
+			<div>{`코멘트: ${data.comments}`}</div>
 		</div>
 	);
 }
