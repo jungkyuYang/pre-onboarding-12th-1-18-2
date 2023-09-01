@@ -1,13 +1,13 @@
 import axiosInstance from './axiosInstance';
-import { API_ENDPOINTS } from '../utils/constants/ApiEndPoint';
+import { API_PATH } from '../utils/constants/constants';
 
 export const issueApi = {
 	getIssue: async (pageNumber: number) => {
-		const response = await axiosInstance.get(API_ENDPOINTS.ISSUE_GET(pageNumber));
+		const response = await axiosInstance.get(API_PATH.ISSUE_GET(pageNumber));
 		return response.data;
 	},
 	getIssueDetail: async (issueNumber: number) => {
-		const response = await axiosInstance.get(API_ENDPOINTS.ISSUEDETAIL_GET(issueNumber));
+		const response = await axiosInstance.get(API_PATH.ISSUEDETAIL_GET(issueNumber));
 		return response.data;
 	},
 };
